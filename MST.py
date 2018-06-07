@@ -139,18 +139,16 @@ class MSTT:
 #print ('\n\n',l)
  
 
-#options([Arc(1,1,0),Arc(2,2,0),Arc(3,3,0),Arc(2,4,1),Arc(3,1,2),Arc(4,7,3),Arc(3,6,4),Arc(1,5,2)],0)              #Graph 1 :Graph with more than one cycles 
-#options([Arc(1,5,0),Arc(2,1,0),Arc(3,1,0),Arc(2,11,1),Arc(3,4,1),Arc(3,5,2),Arc(1,10,2),Arc(1,9,3),Arc(2,8,3)],0) #Graph 2:Graph with more than one cycles        
-#options([Arc(2 ,1,1),Arc(3,3,2),Arc(5,4,3),Arc(6,3,5),Arc(5,2,4),Arc(5,1,2),Arc(4,1,7),Arc(1,2,4),Arc(4,1,3)],7)  #Graph 3:Changing the root node of Graph 1 gives us a different spanning arborescence          
-#options([Arc(2,5,1),Arc(1,-2,2),Arc(2,-3,3),Arc(4,-4,1),Arc(2,7 ,4),Arc(4,9,3),Arc(3,8,1),Arc(1,6,0),Arc(3,7,0)],0)#Graph 4:Graph with negative edges
-#options([Arc(1, 9, 0), Arc(2, 10, 0), Arc(3, 9, 0), Arc(2, 20, 1), Arc(3, 3, 1), Arc(1, 30, 2), Arc(3, 11, 2), Arc(2, 0, 3), Arc(1,30, 3)], 0)#Graph 5:On reversing all the edges of the graph we do not get a spanning arborescence
-#options([Arc(1,5,0),Arc(2,5,0),Arc(3,5,0),Arc(4,5,0),Arc(0,6,1),Arc(2,6,1),Arc(3,6,1),Arc(4,6,1),Arc(0,7,2),Arc(1,7,2),Arc(3,7,2),Arc(4,7,2),Arc(0,8,3),Arc(1,8,3),Arc(2,8,3),Arc(4,8,3),Arc(0,9,4),Arc(1,9,4),Arc(2,9,4),Arc(3,9,4)],0) #Graph 5 : Complete graph of 5 nodes              
-#options([Arc(0,10,0),Arc(1,9,1),Arc(2,10,2)],0)  #Graph 6 : Fails to give an arborescence for a null or disconnected graph
-        
-        
-#options([Arc(1,9,0),Arc(2,8,0),Arc(2,10,1),Arc(1,1,2),Arc(2,6,3),Arc(3,7,2),Arc(1,12,3)],0)
-#options([Arc(1,18,0),Arc(2,9,0),Arc(2,10,1),Arc(1,50,2)],0)  
-##options([Arc(1,5,0),Arc(2,1,0),Arc(3,1,0),Arc(2,11,1),Arc(3,4,1),Arc(3,50,2),Arc(1,100,2),Arc(1,9,3),Arc(2,8,3)],0)
-##options([Arc(1,5,0),Arc(2,1,0),Arc(3,1,0),Arc(2,110,1),Arc(3,4,1),Arc(3,5,2),Arc(1,10,2),Arc(1,9,3),Arc(2,8,3)],0)
-#options([Arc(1,1,0),Arc(2,2,0),Arc(3,3,0),Arc(5,4,0),Arc(2,100,1),Arc(5,7,4),Arc(4,10,3),Arc(5,5,2),Arc(2,6,5),Arc(3,11,2)],0)  
-#options([Arc(1,4,0),Arc(2,5,0),Arc(3,6,0),Arc(4,7,0),Arc(1,10,2),Arc(2,20,1),Arc(3,1,2),Arc(4,30,3),Arc(3,20,4)],0)                
+#l=m.max_spanning_arborescence([Arc(1,1,0),Arc(2,2,0),Arc(3,3,0),Arc(2,4,1),Arc(3,1,2),Arc(4,7,3),Arc(3,6,4),Arc(1,5,2)],0)              #Graph 1 :Graph with more than one cycles 
+#l=m.max_spanning_arborescence([Arc(1,5,0),Arc(2,1,0),Arc(3,1,0),Arc(2,11,1),Arc(3,4,1),Arc(3,5,2),Arc(1,10,2),Arc(1,9,3),Arc(2,8,3)],0) #Graph 2:Graph with more than one cycles        
+#l=m.max_spanning_arborescence([Arc(2 ,1,1),Arc(3,3,2),Arc(5,4,3),Arc(6,3,5),Arc(5,2,4),Arc(5,1,2),Arc(4,1,7),Arc(1,2,4),Arc(4,1,3)],7)  #Graph 3:Changing the root node of Graph 1 gives us a different spanning arborescence          
+#l=m.max_spanning_arborescence([Arc(2,5,1),Arc(1,-2,2),Arc(2,-3,3),Arc(4,-4,1),Arc(2,7 ,4),Arc(4,9,3),Arc(3,8,1),Arc(1,6,0),Arc(3,7,0)],0)#Graph 4:Graph with negative edges
+#l=m.max_spanning_arborescence([Arc(1, 9, 0), Arc(2, 10, 0), Arc(3, 9, 0), Arc(2, 20, 1), Arc(3, 3, 1), Arc(1, 30, 2), Arc(3, 11, 2), Arc(2, 0, 3), Arc(1,30, 3)], 0)#Graph 5:On reversing all the edges of the graph we do not get a spanning arborescence
+#l=m.max_spanning_arborescence([Arc(1,5,0),Arc(2,5,0),Arc(3,5,0),Arc(4,5,0),Arc(0,6,1),Arc(2,6,1),Arc(3,6,1),Arc(4,6,1),Arc(0,7,2),Arc(1,7,2),Arc(3,7,2),Arc(4,7,2),Arc(0,8,3),Arc(1,8,3),Arc(2,8,3),Arc(4,8,3),Arc(0,9,4),Arc(1,9,4),Arc(2,9,4),Arc(3,9,4)],0) #Graph 5 : Complete graph of 5 nodes              
+#l=m.max_spanning_arborescence([Arc(0,10,0),Arc(1,9,1),Arc(2,10,2)],0)  #Graph 6 : Fails to give an arborescence for a null or disconnected graph
+#l=m.max_spanning_arborescence([Arc(1,9,0),Arc(2,8,0),Arc(2,10,1),Arc(1,1,2),Arc(2,6,3),Arc(3,7,2),Arc(1,12,3)],0) #Graphs with varying edge weights 
+#l=m.max_spanning_arborescence([Arc(1,18,0),Arc(2,9,0),Arc(2,10,1),Arc(1,50,2)],0)  
+#l=m.max_spanning_arborescence([Arc(1,5,0),Arc(2,1,0),Arc(3,1,0),Arc(2,11,1),Arc(3,4,1),Arc(3,50,2),Arc(1,100,2),Arc(1,9,3),Arc(2,8,3)],0)
+#l=m.max_spanning_arborescence([Arc(1,5,0),Arc(2,1,0),Arc(3,1,0),Arc(2,110,1),Arc(3,4,1),Arc(3,5,2),Arc(1,10,2),Arc(1,9,3),Arc(2,8,3)],0)
+#l=m.max_spanning_arborescence([Arc(1,1,0),Arc(2,2,0),Arc(3,3,0),Arc(5,4,0),Arc(2,100,1),Arc(5,7,4),Arc(4,10,3),Arc(5,5,2),Arc(2,6,5),Arc(3,11,2)],0)  
+#l=m.max_spanning_arborescence([Arc(1,4,0),Arc(2,5,0),Arc(3,6,0),Arc(4,7,0),Arc(1,10,2),Arc(2,20,1),Arc(3,1,2),Arc(4,30,3),Arc(3,20,4)],0)                
