@@ -1,3 +1,6 @@
+
+#Implementation of Steiner Tree Problem on a directed graph for finding out the maximum weighted spanning subtree of a given directed and weighted graph in graphml format
+
 import networkx as nx
 import threading
 import os
@@ -5,29 +8,19 @@ import random
 import operator
 import pandas as pd
 from collections import namedtuple
-#from MSTT import MSTT
 Arc = namedtuple('Arc',('tail', 'weight', 'head'))   #namedtuple for storing the destination, edge weight and source of every arc  
 os.chdir('C:/Users/Soma/Desktop/Weights/W3')                     
 a=list(os.listdir())                                 #listing down the pathnames of the graphml files
 subgraph=[]                                          #list for storing the path,edge sequence and total weight of the maximum spanning subtree
 graph=[]                                             #list for storing the path,edge sequence and total weight of the maximum spanning arborescence
 ch=0
-#Function smax removes a list of conflicting nodes and their adjacent edges from the original graph  using an ad hoc method in order to form a maximum spanning subtree.
+
+
+#Function submax removes a list of conflicting nodes and their adjacent edges from the original graph  using an ad hoc method in order to form a maximum spanning subtree.
 #A conflicting node is one having the same chunk number as the node and whose starting or ending position indices overlap with that node.
 #The ad hoc method refers to the attributes(namely chunk number, position id and length of the word) of every node of a particular graphml file
-def smst(G,x):
-    g=[]
-    M=nx.maximum_spanning_arborescence(G)
-    sum=0
-    for (u,v) in M.edges():
-         w=M[u][v]['weight']
-         u=int(u)
-         v=int(v)
-         sum=sum+w
-         g.append((u,v,w))
-    graph.append((x,g,sum))     
 
-def smax(G,paths):
+def submax(G,paths):
     node_list=list(G.nodes())
     len_d=len(node_list)
     #Extracting the attributes from the graphml file
@@ -124,7 +117,19 @@ def smax(G,paths):
             p.append((u,v,w))
         subgraph.append((paths,p,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree   
         return
-    
+ 
+
+def smst(G,x):  
+    g=[]
+    M=nx.maximum_spanning_arborescence(G)  #Finding out a maximum spanning arborescence from a directed and weighted graph
+    sum=0
+    for (u,v) in M.edges():
+         w=M[u][v]['weight']
+         u=int(u)
+         v=int(v)
+         sum=sum+w
+         g.append((u,v,w))
+    graph.append((x,g,sum))     
 
 def weighted_graph(G):
     score=[]
@@ -146,7 +151,7 @@ def working(start,end):
         if(ch==0):
             smst(G,x)  #finds a maximum spanning arborescence
         elif(ch==1):
-            smax(G,x)  #finds a maximum spanning subtree using an ad hoc method
+            submax(G,x)  #finds a maximum spanning subtree using an ad hoc method
             
 def create_table1():
     #storing the path,edge sequence and total weight of the maximum spanning arborescence in a CSV
@@ -273,5 +278,7 @@ def myfunct():
 
 ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')    
 myfunct()
-#create_table1()
-create_table2()
+if (ch==0):
+    create_table1()
+elif(ch==1):
+    create_table2()
