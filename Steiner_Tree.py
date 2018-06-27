@@ -9,7 +9,7 @@ import operator
 import pandas as pd
 from collections import namedtuple
 Arc = namedtuple('Arc',('tail', 'weight', 'head'))   #namedtuple for storing the destination, edge weight and source of every arc  
-os.chdir('C:/Users/Soma/Desktop/Weights/W3')                     
+os.chdir('C:/Users/Soma/Desktop/Weights/W1')                     
 a=list(os.listdir())                                 #listing down the pathnames of the graphml files
 subgraph=[]                                          #list for storing the path,list of selected nodes,edge sequence and total weight of the maximum spanning subtree
 graph=[]                                             #list for storing the path,edge sequence and total weight of the maximum spanning arborescence
@@ -149,6 +149,7 @@ def working(start,end):
         x=l[i]
         G=nx.read_graphml(x)   #reading a graph in graphml file from the path x
         G=weighted_graph(G)
+        print(i)
         ch=1
         if(ch==0):
             smst(G,x)  #finds a maximum spanning arborescence
@@ -173,109 +174,13 @@ def myfunct():
     i=0
     #implementation of threads 
     #parallelly executing 20 sets of 250graphml files for faster execution 
-    for i in range(0,1):
-        t1=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t2=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t3=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t4=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t5=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t6=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t7=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t8=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t9=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t10=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t11=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t12=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t13=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t14=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t15=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t16=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t17=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t18=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t19=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-        t20=threading.Thread(target=working,args=(start,end))
-        start=end
-        end=start+250
-       
-        t1.start()
-        t2.start()
-        t3.start()
-        t4.start()
-        t5.start()
-        t6.start()
-        t7.start()
-        t8.start()
-        t9.start()
-        t10.start()
-        t11.start()
-        t12.start()
-        t13.start()
-        t14.start()
-        t15.start()
-        t16.start()
-        t17.start()
-        t18.start()
-        t19.start()
-        t20.start()
-    
-        t1.join()
-        t2.join()
-        t3.join()
-        t4.join()
-        t5.join()
-        t6.join()
-        t7.join()
-        t8.join()
-        t9.join()
-        t10.join()
-        t11.join()
-        t12.join()
-        t13.join()
-        t14.join()
-        t15.join()
-        t16.join()
-        t17.join()
-        t18.join()
-        t19.join()
-        t20.join()
+    for i in range(0,4):
+        for t in range(0,10):
+            t=threading.Thread(target=working,args=(start,end))
+            start=end
+            end=start+250
+            t.start()
+        t.join()
         
 
 #ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')    
