@@ -117,7 +117,7 @@ def submax(G,paths):
             w=H[u][v]['weight']
             s=s+w
             p.append((u,v,w))
-        subgraph.append((paths,k,p,,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree   
+        subgraph.append((paths,k,p,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree   
         return
  
 
@@ -278,9 +278,7 @@ def myfunct():
         t20.join()
         
 
-ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')    
+#ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')    
 myfunct()
-if (ch==0):
-    create_table1()
-elif(ch==1):
-    create_table2()
+create_table1()
+create_table2()
