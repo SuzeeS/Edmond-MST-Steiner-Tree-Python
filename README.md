@@ -19,14 +19,16 @@ Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a 
 - `MST.py` finds out both minimum and  maximum spanning arborescence
 -`Steiner_Tree.py` forms a maximum spannning arborescence of the subgraph on user choice:
 
-`os.chdir('<pathname>')   #Add the pathname
+ ```
+ os.chdir('<pathname>')   #Add the pathname
  ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')  
  G=nx.read_graphml(x)   #reading a graph in graphml file from the path x
  G=weighted_graph(G)
  if(ch==0):
      smst(G,x)  #finds a maximum spanning arborescence
  elif(ch==1):
-     submax(G,x)  #finds a maximum spanning subtree using an ad hoc method`
+     submax(G,x)  #finds a maximum spanning subtree using an ad hoc method
+ ```
  
  ##Sample Input:
  A sample graphml file has been provided as `sample input`
