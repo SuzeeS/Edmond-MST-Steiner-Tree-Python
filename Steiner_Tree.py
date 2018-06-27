@@ -1,5 +1,5 @@
 
-#Implementation of Steiner Tree Problem on a directed graph for finding out the maximum weighted spanning subtree of a given directed and weighted graph in graphml format
+#Implementation of Steiner Tree Problem on a directed graph for finding out the maximum weighted spanning subtree of a given directed graph in graphml format
 
 import networkx as nx
 import threading
@@ -11,7 +11,7 @@ from collections import namedtuple
 Arc = namedtuple('Arc',('tail', 'weight', 'head'))   #namedtuple for storing the destination, edge weight and source of every arc  
 os.chdir('C:/Users/Soma/Desktop/Weights/W3')                     
 a=list(os.listdir())                                 #listing down the pathnames of the graphml files
-subgraph=[]                                          #list for storing the path,edge sequence and total weight of the maximum spanning subtree
+subgraph=[]                                          #list for storing the path,list of selected nodes,edge sequence and total weight of the maximum spanning subtree
 graph=[]                                             #list for storing the path,edge sequence and total weight of the maximum spanning arborescence
 ch=0
 
@@ -29,6 +29,7 @@ def submax(G,paths):
     dt=nx.get_node_attributes(G,'length_word')
     #calcuating the final position index of every node
     df={key:(ds[key]+dt[key]-1) for key in ds} 
+    #Extracting the weight of every edge
     w=nx.get_edge_attributes(G,'weight')                       
     arcs=[]
     for (u,v) in G.edges():
@@ -45,7 +46,7 @@ def submax(G,paths):
         n=int(node_list[i])
         for arc in arcs:
             if arc.tail==n:
-                temp.append(arc)
+                temp.append(arc)   #storing all the incoming arcs of every node
         z[n]=temp
         if  len(z[n])!=0:
             bestInEdge[n]=max(z[n])        #storing the maximum weighted incoming arc of every node
@@ -64,7 +65,7 @@ def submax(G,paths):
                     contradict.setdefault(int(n),[]).append(int(node))     #appending a list of conflicting nodes corresponding to every node of the graph
     for k in node_list:
         if int(k) not in contradict:
-            contradict[int(k)]=[]
+            contradict[int(k)]=[]                     
     key_list=[]
     #list storing the nodes in the descending order of their maximum weighted incoming arc 
     for arc in d:
@@ -82,10 +83,11 @@ def submax(G,paths):
     for i in node_list:
         if int(i) not in spanned:
             rem.append(int(i))        #storing a list of conflicting nodes
-    X=nx.DiGraph()                    
+    #Creating a subgraph from the non-conflicting nodes
+    X=nx.DiGraph()                                      
     X=G
     for i in rem:
-        X.remove_node(str(i))         #removing the conflicting nodes and their adjacent edges from the original graph
+        X.remove_node(str(i))         #removing the conflicting nodes and their adjacent edges from the original graph to form the subgraph
                                                                         
     try:
         H=nx.maximum_spanning_arborescence(X)  #forming a maximum spanning arborescence from the subgraph
@@ -96,16 +98,16 @@ def submax(G,paths):
             w=H[u][v]['weight']
             s=s+w
             p.append((u,v,w))
-        subgraph.append((paths,p,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree                             
+        subgraph.append((paths,spanned,p,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree                             
     except:
         D=nx.Graph()
         D=X.to_undirected()
         l=sorted(nx.connected_components(D), key = len, reverse=True)  #Storing the connected components of the disconnected graphs formed using the non conflicting nodes
         #Selecting the connected component with greater number of nodes
-        p=list(l[0])                                                    
-        if(len(p)!=0):
+        k=list(l[0])                                                    
+        if(len(k)!=0):
             for i in spanned:
-                if str(i) not in  p:
+                if str(i) not in  k:
                     X.remove_node(str(i))      #removing the nodes of the disconnected components  
         H=nx.maximum_spanning_arborescence(X)  #forming a maximum spanning arborescence from the subgraph
         s=0
@@ -115,7 +117,7 @@ def submax(G,paths):
             w=H[u][v]['weight']
             s=s+w
             p.append((u,v,w))
-        subgraph.append((paths,p,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree   
+        subgraph.append((paths,k,p,,s))   #storing the path,edge sequence and total weight of the maximum spanning subtree   
         return
  
 
@@ -146,7 +148,7 @@ def working(start,end):
     for i in range(0,len(l)):    
         x=l[i]
         G=nx.read_graphml(x)   #reading a graph in graphml file from the path x
-        #G=weighted_graph(G)
+        G=weighted_graph(G)
         ch=1
         if(ch==0):
             smst(G,x)  #finds a maximum spanning arborescence
@@ -160,10 +162,10 @@ def create_table1():
         df.loc[i]=[graph[i][0],graph[i][1],graph[i][2]]
     df.to_csv("graph.csv")                
 def create_table2():
-    #storing the path,edge sequence and total weight of the maximum spanning subtree in a CSV
-    df=pd.DataFrame(columns= ['Graphs','Edge Sequence(Source,Destination,Weight)','Total Weight'])
+    #storing the path,list of selected nodes,edge sequence and total weight of the maximum spanning subtree in a CSV
+    df=pd.DataFrame(columns= ['Graphs','Selected Nodes','Edge Sequence(Source,Destination,Weight)','Total Weight'])
     for i in range(0,len(subgraph)):
-        df.loc[i]=[subgraph[i][0],subgraph[i][1],subgraph[i][2]]
+        df.loc[i]=[subgraph[i][0],subgraph[i][1],subgraph[i][2],subgraph[i][3]]
     df.to_csv("sub.csv")  
 def myfunct():
     start=0
