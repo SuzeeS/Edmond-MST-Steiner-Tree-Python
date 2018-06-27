@@ -31,8 +31,8 @@ Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a 
  ```
  
  ## Sample Input:
- - A sample graphml file has been provided as `sample input`
- - `graph file` contains a list of 1,19,000 graghs in graphml format
+ - A sample graphml file has been provided as `Sample Input`
+ - A folder named `graph` contains a list of 53,984 graghs in graphml format
  
  
  
