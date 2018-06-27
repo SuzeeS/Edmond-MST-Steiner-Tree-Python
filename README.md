@@ -21,11 +21,11 @@ The Steiner tree algorithm aims at spanning only those set of selected nodes and
 `MST.py` is a python implementation of Chu-Liu/Edmond's algorithm to find the minimum spanning tree in a directed graph.Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a maximum spanning arborescence.
 
 ## Testing
-
+Run the code :
  `python` `Steiner_Tree.py`
- python -m markdown Steiner_Tree.py
+ 
  ```
- os.chdir('<pathname>')   #Add the pathname
+ os.chdir('C:\User\Desktop\graphs')   #Add the pathname
  ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')  
  G=nx.read_graphml(x)   #reading a graph in graphml file from the path x
  G=weighted_graph(G)
