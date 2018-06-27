@@ -173,7 +173,7 @@ def myfunct():
     end=250
     i=0
     #implementation of threads 
-    #parallelly executing 20 sets of 250graphml files for faster execution 
+    #parallelly executing sets of 250graphml files for faster execution 
     for i in range(0,4):
         for t in range(0,10):
             t=threading.Thread(target=working,args=(start,end))
