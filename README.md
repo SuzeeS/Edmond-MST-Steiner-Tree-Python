@@ -17,7 +17,7 @@ Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a 
 
 ##Input: 
 - `MST.py` finds out both minimum and  maximum spanning arborescence
--`Steiner_Tree.py` forms a maximum spannning arborescence of the subgraph on user choice:
+- `Steiner_Tree.py` forms a maximum spannning arborescence of the subgraph on user choice:
 
  ```
  os.chdir('<pathname>')   #Add the pathname
@@ -31,8 +31,8 @@ Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a 
  ```
  
  ##Sample Input:
- A sample graphml file has been provided as `sample input`
- `graph file` contains a list of 1,19,000 graghs in graphml format
+ - A sample graphml file has been provided as `sample input`
+ - `graph file` contains a list of 1,19,000 graghs in graphml format
  
  
  
