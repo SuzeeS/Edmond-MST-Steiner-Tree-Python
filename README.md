@@ -9,6 +9,7 @@ The setences are in the form of directed , weighted graphs stored in graphml for
 - position id 
 - starting index
 - length of the word.
+## Steiner Tree
 Words having the same chunk number represent sandhi which occur prominently in the phonology of Indian languages. 
 A Sandhi is a cover term for a wide variety of phonological processes that occur at morpheme or word boundaries.
 A sandhi can be identified from a list of nodes having the same chunk number whose starting or ending indices overlap with the one another,among which only one node has to be selected.
