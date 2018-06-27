@@ -1,6 +1,6 @@
 # Edmond-S-MST-Python
 
-##Goal:
+## Goal:
 This project deals with the segmentation of  sentences into parts using syntactic analysis:
 The setences are in the form of directed , weighted graphs stored in graphml format.Each node represents a word having the following  attributes : 
 - chunk number 
@@ -15,7 +15,7 @@ A sandhi can be identified from a list of nodes having the same chunk number who
 The Steiner tree algorithm aims at spanning only those set of selected nodes and forming a maximum spanning subtree using its adjacent edges.
 Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a maximum spanning arborescence.
 
-##Input: 
+## Input: 
 - `MST.py` finds out both minimum and  maximum spanning arborescence
 - `Steiner_Tree.py` forms a maximum spannning arborescence of the subgraph on user choice:
 
@@ -30,7 +30,7 @@ Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a 
      submax(G,x)  #finds a maximum spanning subtree using an ad hoc method
  ```
  
- ##Sample Input:
+ ## Sample Input:
  - A sample graphml file has been provided as `sample input`
  - `graph file` contains a list of 1,19,000 graghs in graphml format
  
