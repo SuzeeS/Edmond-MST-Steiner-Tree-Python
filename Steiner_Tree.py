@@ -1,6 +1,6 @@
 
 #Implementation of Steiner Tree Problem on a directed graph for finding out the maximum weighted spanning subtree of a given directed graph in graphml format
-
+import sys
 import networkx as nx
 import threading
 import os
@@ -8,12 +8,12 @@ import random
 import operator
 import pandas as pd
 from collections import namedtuple
+
 Arc = namedtuple('Arc',('tail', 'weight', 'head'))   #namedtuple for storing the destination, edge weight and source of every arc  
-os.chdir('C:/Users/Soma/Desktop/Weights/W1')                     
+os.chdir(str(sys.argv[2]))                           #Enter the pathname
 a=list(os.listdir())                                 #listing down the pathnames of the graphml files
 subgraph=[]                                          #list for storing the path,list of selected nodes,edge sequence and total weight of the maximum spanning subtree
 graph=[]                                             #list for storing the path,edge sequence and total weight of the maximum spanning arborescence
-ch=0
 
 
 #Function submax removes a list of conflicting nodes and their adjacent edges from the original graph  using an ad hoc method in order to form a maximum spanning subtree.
@@ -149,8 +149,6 @@ def working(start,end):
         x=l[i]
         G=nx.read_graphml(x)   #reading a graph in graphml file from the path x
         G=weighted_graph(G)
-        print(i)
-        ch=1
         if(ch==0):
             smst(G,x)  #finds a maximum spanning arborescence
         elif(ch==1):
@@ -173,17 +171,18 @@ def myfunct():
     end=250
     i=0
     #implementation of threads 
-    #parallelly executing sets of 250graphml files for faster execution 
-    for i in range(0,4):
-        for t in range(0,10):
-            t=threading.Thread(target=working,args=(start,end))
-            start=end
-            end=start+250
-            t.start()
+    #parallelly executing 40 sets of 250graphml files for faster execution 
+    for i in range(0,40):
+        t=threading.Thread(target=working,args=(start,end))
+        start=end
+        end=start+250
+        t.start()
         t.join()
         
-
-#ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')    
-myfunct()
-create_table1()
-create_table2()
+if __name__ == "__main__": 
+    ch=int(sys.argv[1])   #Enter the choice: 0->Maximum spanning arborescence 
+    myfunct()             #                  1->Maximum spanning subtree                           
+    if (ch==0):
+        create_table1()
+    elif(ch==1):
+        create_table2()
