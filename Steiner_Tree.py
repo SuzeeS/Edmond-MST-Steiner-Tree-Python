@@ -190,4 +190,7 @@ if __name__ == "__main__":
         create_table1()
     elif(ch==1):
         create_table2()
+    else:
+        print('Wrong Input')
+        sys.exit()
 
