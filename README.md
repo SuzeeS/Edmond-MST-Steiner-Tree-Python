@@ -10,7 +10,9 @@ The setences are in the form of directed , weighted graphs stored in graphml for
 - starting index
 - length of the word,
 and every edge has an attribute named weight.
+
 ## Steiner Tree
+A Steiner tree is one which spans though a given subset of vertices selected from a graph. 
 Words having the same chunk number represent sandhi which occur prominently in the phonology of Indian languages. 
 A Sandhi is a cover term for a wide variety of phonological processes that occur at morpheme or word boundaries.
 A sandhi can be identified from a list of nodes having the same chunk number whose starting or ending indices overlap with the one another,among which only one node has to be selected.
@@ -24,6 +26,7 @@ The Steiner tree algorithm aims at spanning only those set of selected nodes and
 Run the code :
  `python` `Steiner_Tree.py`
  
+ Algorithm provides a user choice:
  ```
  os.chdir('C:\User\Desktop\graphs')   #Add the pathname
  ch=input('Enter your choice:\n0->Maximum Spanning Arborescence\n1->Maximum Spanning Subtree using an Ad hoc method')  
