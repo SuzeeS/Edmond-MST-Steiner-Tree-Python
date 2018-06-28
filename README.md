@@ -23,8 +23,8 @@ The Steiner tree algorithm aims at spanning only those set of selected nodes and
 
 ## Testing Steiner_Tree.py
 Run the code :
-- Case 1 : Maximum Spanning Arborescence (user input = 0)  \ `python``Steiner_Tree.py``0``<Number of Threads>``<Directory of the folder containing the graphml files>`
-- Case 2 : Maximum Spanning Arborescence of the subgraph(user input = 1)  \ `python``Steiner_Tree.py``1``<Number of Threads>``<Directory of the folder containing the graphml files>`
+- Case 1 : Maximum Spanning Arborescence (user input = 0)\ `python` `Steiner_Tree.py` `0` `<Number of Threads>` `<Directory of the folder containing the graphml files>`
+- Case 2 : Maximum Spanning Arborescence of the subgraph(user input = 1)\ `python` `Steiner_Tree.py` `1` `<Number of Threads>` `<Directory of the folder containing the graphml files>`
  
  ## Sample Input:
  - `Sample Input.graphml` is a sample graphml file having the aforementioned node and edgeattributes
