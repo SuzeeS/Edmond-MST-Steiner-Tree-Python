@@ -1,4 +1,3 @@
-
 #Implementation of Steiner Tree Problem on a directed graph for finding out the maximum weighted spanning subtree of a given directed graph in graphml format
 import sys
 import networkx as nx
@@ -7,10 +6,11 @@ import os
 import random
 import operator
 import pandas as pd
+import math
 from collections import namedtuple
 
 Arc = namedtuple('Arc',('tail', 'weight', 'head'))   #namedtuple for storing the destination, edge weight and source of every arc  
-os.chdir(str(sys.argv[2]))                           #Enter the pathname
+os.chdir(str(sys.argv[3]))                           #Enter the pathname
 a=list(os.listdir())                                 #listing down the pathnames of the graphml files
 subgraph=[]                                          #list for storing the path,list of selected nodes,edge sequence and total weight of the maximum spanning subtree
 graph=[]                                             #list for storing the path,edge sequence and total weight of the maximum spanning arborescence
@@ -160,29 +160,34 @@ def create_table1():
     for i in range(0,len(graph)):
         df.loc[i]=[graph[i][0],graph[i][1],graph[i][2]]
     df.to_csv("graph.csv")                
+
 def create_table2():
     #storing the path,list of selected nodes,edge sequence and total weight of the maximum spanning subtree in a CSV
     df=pd.DataFrame(columns= ['Graphs','Selected Nodes','Edge Sequence(Source,Destination,Weight)','Total Weight'])
     for i in range(0,len(subgraph)):
         df.loc[i]=[subgraph[i][0],subgraph[i][1],subgraph[i][2],subgraph[i][3]]
     df.to_csv("sub.csv")  
-def myfunct():
+
+def myfunct(T):
     start=0
-    end=250
+    end=T
     i=0
     #implementation of threads 
     #parallelly executing 40 sets of 250graphml files for faster execution 
-    for i in range(0,40):
+    r=math.ceil(len(a)/T)
+    for i in range(0,T):
         t=threading.Thread(target=working,args=(start,end))
         start=end
-        end=start+250
+        end=start+r
         t.start()
         t.join()
-        
+    
+
 if __name__ == "__main__": 
-    ch=int(sys.argv[1])   #Enter the choice: 0->Maximum spanning arborescence 
-    myfunct()             #                  1->Maximum spanning subtree                           
+    ch=int(sys.argv[1])   #Enter the choice: 0->Maximum spanning arborescence 1->Maximum spanning subtree 
+    myfunct(int(sys.argv[2]))  #Specify the number of threads                                      
     if (ch==0):
         create_table1()
     elif(ch==1):
         create_table2()
+
