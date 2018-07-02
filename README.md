@@ -19,7 +19,7 @@ A sandhi can be identified from a list of nodes having the same chunk number who
 The Steiner tree algorithm aims at spanning only those set of selected nodes and forming a maximum spanning subtree using its adjacent edges.`Steiner_Tree.py` forms a maximum spannning arborescence of the subgraph on user choice.
 
 ## Edmond's Chu Liu Algorithm
-`MST.py` is a python implementation of Chu-Liu/Edmond's algorithm to find the minimum spanning tree in a directed graph.Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a maximum spanning arborescence.
+`MST.py` is a python implementation of Chu-Liu/Edmond's algorithm to find the maximum/minimum spanning tree in a directed graph.Edmond's Chu Liu Algorithm spans the entire set of nodes in the graph to form a maximum spanning arborescence.
 
 ## Testing Steiner_Tree.py
 Run the code :
